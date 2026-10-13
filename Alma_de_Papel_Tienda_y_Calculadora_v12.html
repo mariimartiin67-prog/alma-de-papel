@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alma de Papel | Tienda</title>
+<style>
+:root{--ink:#282522;--muted:#77716d;--pink:#ead0d3;--rose:#b66f7c;--cream:#fbf7f2;--line:#eadfda;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:999px;padding:12px 18px;background:var(--ink);color:white}button.secondary{background:white;color:var(--ink);border:1px solid var(--line)}button.pink{background:var(--rose)}header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.top{max-width:1180px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-family:Georgia,serif;font-size:27px;letter-spacing:.2px}.brand small{display:block;font:10px Arial;letter-spacing:3px;color:var(--rose);margin-top:4px}.nav{display:flex;gap:8px;flex-wrap:wrap}.hero{max-width:1180px;margin:26px auto;padding:30px 22px}.hero-inner{background:linear-gradient(110deg,#f2dfdf,#fbf2e8);border-radius:24px;padding:42px;display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#925d65}.hero h1{font:clamp(34px,5vw,56px) Georgia,serif;font-weight:normal;line-height:1.05;margin:14px 0}.hero p{color:#615854;line-height:1.6;max-width:520px}.hero-art{font-size:84px;text-align:center;filter:drop-shadow(0 10px 12px #a47c7c25)}main{max-width:1180px;margin:0 auto;padding:0 22px 60px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:26px 0 18px}.section-head h2{font:32px Georgia,serif;font-weight:normal;margin:0}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.filters input,.filters select,.field input,.field textarea,.field select{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;min-width:0}.filters input{flex:1;min-width:180px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}.photo{height:190px;background:linear-gradient(135deg,#f6e8e7,#eee5d8);display:flex;align-items:center;justify-content:center;font-size:58px;color:#9e7b7c;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover}.card-body{padding:15px;display:flex;flex-direction:column;gap:8px;flex:1}.category{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--rose)}.card h3{font:20px Georgia,serif;font-weight:normal;margin:0}.desc{font-size:13px;line-height:1.5;color:var(--muted);flex:1}.price{font-weight:bold;font-size:18px;margin:4px 0}.card-actions{display:flex;gap:7px}.card-actions button{flex:1;padding:10px 12px;font-size:13px}.footer{background:#fff;border-top:1px solid var(--line);padding:28px 22px;text-align:center;color:var(--muted);font-size:13px}.modal-back{position:fixed;inset:0;background:#211b1bcc;z-index:10;display:none;align-items:center;justify-content:center;padding:18px}.modal-back.show{display:flex}.modal{background:#fff;border-radius:20px;padding:24px;width:min(680px,100%);max-height:90vh;overflow:auto}.modal h2{font:28px Georgia,serif;font-weight:normal;margin-top:0}.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:13px;color:var(--muted)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0}.row small{display:block;color:var(--muted);margin-top:4px}.qty{display:flex;align-items:center;gap:7px}.qty button{padding:5px 10px}.notice{background:#fff6e8;border:1px solid #f1dfbd;padding:12px;border-radius:12px;color:#6b583d;font-size:13px;line-height:1.5}.admin{display:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin:25px 0}.admin.show{display:block}.costs-panel{display:block;background:#fff;border:2px solid var(--rose);border-radius:18px;padding:20px;margin:25px 0}.costs-panel.show{display:block}.admin-list{font-size:13px}.hidden{display:none!important}.empty{padding:30px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:18px}.pill{background:#f5e6e7;border-radius:99px;padding:7px 10px;font-size:12px;color:#8c5962}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-inner{padding:28px;grid-template-columns:1fr .4fr}.hero-art{font-size:55px}.top{align-items:flex-start}.brand{font-size:22px}}
+@media(max-width:520px){.grid{gap:10px}.photo{height:140px;font-size:42px}.card-body{padding:11px}.card h3{font-size:17px}.card-actions{flex-direction:column}.hero-inner{grid-template-columns:1fr;padding:24px}.hero-art{display:none}.formgrid{grid-template-columns:1fr}.nav button{padding:9px 12px}.section-head h2{font-size:27px}}
+</style></head>
+<body>
+<header><div class="top"><div class="brand">Alma de Papel<small>PAPELERÍA CREATIVA · DISEÑOS CON AMOR</small></div><div class="nav"><button class="secondary" onclick="scrollToProducts()">Ver productos</button><button class="pink" onclick="openCart()">🛍 Carrito <span id="cartCount">0</span></button><button class="pink" onclick="openCosts()">Calcular costo</button><button class="secondary" onclick="adminLogin()">Administrar</button></div></div></header>
+<section class="hero"><div class="hero-inner"><div><div class="eyebrow">Hecho para regalar · Hecho para vos</div><h1>Pequeños detalles,<br>grandes momentos.</h1><p>Encontrá papelería personalizada, regalos únicos y creaciones impresas en 3D. Elegí tus favoritos y prepará tu pedido desde acá.</p><button class="pink" onclick="scrollToProducts()">Explorar tienda</button></div><div class="hero-art">✿<br>🎀<br>✎</div></div></section>
+<main><div class="section-head"><div><div class="eyebrow">Nuestra selección</div><h2>Productos para enamorarte</h2></div><span class="pill" id="productCount"></span></div>
+<div class="filters"><input id="search" placeholder="Buscar un producto..." oninput="renderProducts()"><select id="categoryFilter" onchange="renderProducts()"><option value="">Todas las categorías</option></select></div>
+<div class="grid" id="products"></div>
+<section class="admin" id="admin"><div class="section-head"><div><div class="eyebrow">Panel privado de demostración</div><h2>Administrar productos</h2></div><button class="secondary" onclick="closeAdmin()">Cerrar</button></div><p class="notice">Esta primera versión guarda los productos en este navegador. Para administrar desde cualquier dispositivo y recibir pedidos reales necesitamos publicar la app y conectar una base de datos segura.</p>
+<h3>Agregar / editar producto</h3><div class="formgrid"><div class="field"><label>Nombre</label><input id="pName" placeholder="Ej. Llavero personalizado"></div><div class="field"><label>Categoría</label><input id="pCategory" placeholder="Ej. Llaveros"></div><div class="field"><label>Precio (ARS)</label><input id="pPrice" type="number" min="0" placeholder="4500"></div><div class="field"><label>Emoji o URL de foto</label><input id="pImage" placeholder="🎀 o https://..."></div></div><div class="field"><label>Descripción</label><textarea id="pDesc" rows="2" placeholder="Contá qué hace especial al producto"></textarea></div><button class="pink" onclick="saveProduct()">Guardar producto</button> <button class="secondary" onclick="resetProductForm()">Limpiar</button><div id="adminProducts" class="admin-list"></div><div id="salesArea" style="margin-top:28px;padding-top:20px;border-top:2px solid var(--line)">
+<h2 style="font:28px Georgia,serif;font-weight:normal">Ventas y ganancias</h2>
+<p class="notice">Registrá las ventas reales. El costo unitario lo ingresás según tu calculadora; si lo dejás en $0, la ganancia será solo una estimación incompleta. Los datos se guardan en este navegador.</p>
+<h3>Registrar una venta</h3>
+<div class="formgrid">
+<div class="field"><label>Producto</label><select id="saleProduct"></select></div>
+<div class="field"><label>Fecha</label><input id="saleDate" type="date"></div>
+<div class="field"><label>Cantidad</label><input id="saleQty" type="number" min="1" step="1" value="1"></div>
+<div class="field"><label>Precio de venta por unidad ($)</label><input id="salePrice" type="number" min="0" step="0.01" value="0"></div>
+<div class="field"><label>Costo por unidad ($)</label><input id="saleCost" type="number" min="0" step="0.01" value="0"></div>
+<div class="field"><label>Forma de pago</label><select id="salePayment"><option>Efectivo</option><option>Transferencia</option><option>Mercado Pago</option><option>Tarjeta</option><option>Otro</option></select></div>
+<div class="field"><label>Estado del cobro</label><select id="saleStatus"><option value="Cobrado">Cobrado</option><option value="Pendiente">Pendiente de cobro</option></select></div>
+<div class="field"><label>Nota (opcional)</label><input id="saleNote" placeholder="Cliente, pedido o detalle"></div>
+</div>
+<button class="pink" type="button" id="saleAddBtn">Guardar venta</button>
+<h3 style="margin-top:28px">Resumen mensual</h3>
+<div class="formgrid"><div class="field"><label>Mes a consultar</label><input id="saleMonth" type="month"></div></div>
+<div class="formgrid" id="salesSummary">
+<div class="notice"><strong>Ventas registradas</strong><div id="salesGross">$0</div></div>
+<div class="notice"><strong>Dinero cobrado</strong><div id="salesCollected">$0</div></div>
+<div class="notice"><strong>Pendiente de cobro</strong><div id="salesPending">$0</div></div>
+<div class="notice"><strong>Costos estimados</strong><div id="salesCosts">$0</div></div>
+<div class="notice"><strong>Ganancia estimada</strong><div id="salesProfit">$0</div></div>
+<div class="notice"><strong>Cantidad de ventas</strong><div id="salesCount">0</div></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0"><button class="secondary" type="button" id="salesExportBtn">Exportar ventas CSV</button><button class="secondary" type="button" id="salesExportJsonBtn">Respaldo de ventas JSON</button></div>
+<div id="salesList" class="admin-list"></div>
+</div>
+</section>
+<section class="costs-panel" id="costsArea" style="display:block">
+<div class="section-head"><div><div class="eyebrow">Herramientas internas</div><h2>Calculadora de costos</h2></div></div>
+<p class="notice"><strong>Calculá primero; publicá después.</strong> Esta sección es independiente del catálogo. No hace falta crear un producto.</p>
+<details open style="margin:16px 0;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff">
+<summary style="cursor:pointer;font-weight:bold;color:var(--rose)">📦 Mi lista de materiales y precios</summary>
+<p class="desc">Cargá una vez cada material con su precio y unidad. Después lo elegís para cada producto y solo indicás cuánto usás.</p>
+<div class="formgrid">
+<div class="field"><label>Material / insumo</label><input id="matName" placeholder="Ej. Papel fotográfico"></div>
+<div class="field"><label>Categoría</label><select id="matCategory"><option>Filamento 3D</option><option>Papel</option><option>Tinta</option><option>Vinilo</option><option>Anillado</option><option>Packaging</option><option>Adhesivos</option><option>Otros</option></select></div>
+<div class="field"><label>Precio pagado ($)</label><input id="matPrice" type="number" min="0" placeholder="Ej. 12000"></div>
+<div class="field"><label>Contenido comprado</label><input id="matAmount" type="number" min="0.001" step="any" value="1"></div>
+<div class="field"><label>Unidad del contenido</label><select id="matUnit"><option value="g">gramos (g)</option><option value="ml">mililitros (ml)</option><option value="unidad">unidades</option><option value="hoja">hojas</option><option value="m">metros</option><option value="rollo">rollos</option></select></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="pink" id="matSaveBtn">Guardar material</button><button type="button" class="secondary" id="matClearBtn">Limpiar</button></div>
+<div id="matLibraryList" style="margin-top:12px"></div>
+</details>
+<div class="field"><label>Elegir material guardado para sumar al costo</label><select id="matSelect"><option value="">Seleccioná un material...</option></select></div>
+<div class="formgrid">
+<div class="field"><label>Cantidad utilizada</label><input id="matUsedQty" type="number" min="0" step="any" value="0"></div>
+<div class="field"><label>Unidad utilizada</label><select id="matUsedUnit"><option value="g">gramos (g)</option><option value="ml">mililitros (ml)</option><option value="unidad">unidades</option><option value="hoja">hojas</option><option value="m">metros</option><option value="rollo">rollos</option></select></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="secondary" id="matAddBtn">Agregar material al producto</button></div>
+<div id="matProductLines"></div>
+<div class="formgrid">
+<div class="field"><label>Nombre (opcional)</label><input id="calcName" placeholder="Ej. Llavero personalizado"></div>
+<div class="field"><label>Tipo de producto</label><select id="calcType"><option value="3d">Impresión 3D</option><option value="manual">Papelería / personalizado</option></select></div>
+<div class="field"><label>Filamento utilizado (gramos)</label><input id="calcGrams" type="number" min="0" value="0"></div>
+<div class="field"><label>Precio del rollo de 1 kg ($)</label><input id="calcRoll" type="number" min="0" value="26000"></div>
+<div class="field"><label>Horas de uso de la máquina</label><input id="calcHours" type="number" min="0" step="0.1" value="0"></div>
+<div class="field"><label>3D · Costo eléctrico por hora ($)</label><input id="calcElectricity" type="number" min="0" value="39.84"></div>
+<div class="field"><label>3D · Desgaste/mantenimiento por hora ($)</label><input id="calcMachine" type="number" min="0" value="150"></div>
+<div class="field"><label>Papelería · Costo eléctrico por hora ($)</label><input id="calcPaperElectricity" type="number" min="0" step="0.01" value="4.65"></div>
+<div class="field"><label>Papelería · Desgaste/mantenimiento por hora ($)</label><input id="calcPaperMachine" type="number" min="0" step="0.01" value="20"></div>
+<p class="notice" style="grid-column:1/-1">Para papelería, configurá el costo por hora de tu impresora de tinta en los dos campos específicos. Se calculan por separado de la impresora 3D. Dejalos en $0 solo si no querés imputar esos costos.</p>
+<div class="field"><label>Otros materiales ($)</label><input id="calcMaterials" type="number" min="0" value="0"></div>
+<div class="field"><label>Packaging ($)</label><input id="calcPack" type="number" min="0" value="0"></div>
+<div class="field"><label>Mano de obra ($)</label><input id="calcLabor" type="number" min="0" value="0"></div>
+<div class="field"><label>Otros gastos ($)</label><input id="calcOther" type="number" min="0" value="0"></div>
+<div class="field"><label>Margen sobre costo (%)</label><input id="calcMargin" type="number" min="0" value="60"></div>
+</div>
+<div class="row"><span>Filamento</span><strong id="calcFilamentResult">$0</strong></div>
+<div class="row"><span>Materiales de la lista guardada</span><strong id="calcSavedMaterialsResult">$0</strong></div>
+<div class="row"><span>Costo eléctrico</span><strong id="calcElectricResult">$0</strong></div>
+<div class="row"><span>Desgaste / mantenimiento</span><strong id="calcMachineResult">$0</strong></div>
+<div class="row"><span><strong>Costo total estimado</strong></span><strong id="calcTotalResult">$0</strong></div>
+<div class="row"><span><strong>Precio sugerido</strong></span><strong id="calcPriceResult">$0</strong></div>
+<div class="row"><span>Ganancia estimada</span><strong id="calcProfitResult">$0</strong></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="pink" type="button" id="calcRunBtn">Calcular costo</button><button class="secondary" type="button" id="calcSaveBtn">Guardar cálculo</button><button class="secondary" type="button" id="calcResetBtn">Limpiar</button></div>
+<div id="calcMessage" class="desc" style="margin-top:10px"></div>
+<div id="calcSavedList" style="margin-top:14px"></div>
+</section>
+</main><footer class="footer">Alma de Papel · Papelería creativa y personalizados<br>Gracias por elegir un emprendimiento hecho con amor ✿</footer>
+<div class="modal-back" id="cartModal"><div class="modal"><div class="section-head"><h2>Tu carrito</h2><button class="secondary" onclick="closeModal('cartModal')">Cerrar</button></div><div id="cartItems"></div><div class="row"><strong>Total</strong><strong id="cartTotal">$0</strong></div><button class="pink" style="width:100%;margin-top:12px" onclick="openCheckout()">Continuar con la compra</button></div></div>
+<div class="modal-back" id="checkoutModal"><div class="modal"><div class="section-head"><h2>Finalizar compra</h2><button class="secondary" onclick="closeModal('checkoutModal')">Cerrar</button></div><div class="notice">Completá tus datos y elegí cómo querés pagar. Esta demo registra el pedido localmente, pero todavía no cobra dinero ni confirma pagos automáticamente.</div><div class="formgrid"><div class="field"><label>Nombre y apellido</label><input id="cName" required></div><div class="field"><label>WhatsApp</label><input id="cPhone" required></div><div class="field"><label>Email</label><input id="cEmail" type="email"></div><div class="field"><label>Entrega</label><select id="cDelivery"><option>Coordinar envío</option><option>Retiro acordado</option></select></div></div><div class="field"><label>Personalización / notas del pedido</label><textarea id="cNotes" rows="2" placeholder="Nombre para el llavero, color, etc."></textarea></div><div class="field"><label>Forma de pago</label><select id="cPayment"><option value="Mercado Pago">Mercado Pago (requiere integración)</option><option value="Transferencia bancaria">Transferencia bancaria</option></select></div><div class="row"><strong>Total a pagar</strong><strong id="checkoutTotal">$0</strong></div><button class="pink" style="width:100%;margin-top:12px" onclick="placeOrder()">Confirmar pedido</button></div></div>
+<script>
+const initialProducts=[
+{id:1,name:"Agenda personalizada",category:"Papelería",price:12500,image:"📔",desc:"Agenda con tapas personalizables. Consultá diseños disponibles."},
+{id:2,name:"Cuaderno A5",category:"Papelería",price:6500,image:"📒",desc:"Cuaderno práctico para estudiar, trabajar o regalar."},
+{id:3,name:"Llavero con nombre",category:"Personalizados",price:4500,image:"🔑",desc:"Llavero personalizado con el nombre que elijas."},
+{id:4,name:"Maceta impresa en 3D",category:"Impresión 3D",price:7500,image:"🪴",desc:"Diseño decorativo impreso en 3D. Colores a consultar."},
+{id:5,name:"Souvenir personalizado",category:"Eventos",price:3000,image:"🎁",desc:"Un detalle especial para cumpleaños y celebraciones."},
+{id:6,name:"Stickers personalizados",category:"Papelería",price:2500,image:"🌸",desc:"Stickers para decorar agendas, packaging y regalos."},
+{id:7,name:"Colgante para cartera",category:"Personalizados",price:5200,image:"🎀",desc:"Accesorio personalizado para llevar a todas partes."},
+{id:8,name:"Kit de regalo",category:"Regalos",price:9800,image:"🎀",desc:"Una combinación de detalles creativos para regalar."}
+];
+let products=JSON.parse(localStorage.getItem("adp_products")||"null")||initialProducts;
+let cart=JSON.parse(localStorage.getItem("adp_cart")||"[]"), orders=JSON.parse(localStorage.getItem("adp_orders")||"[]"), editingId=null;
+const money=n=>new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(n||0);
+const saveAll=()=>{localStorage.setItem("adp_products",JSON.stringify(products));localStorage.setItem("adp_cart",JSON.stringify(cart));localStorage.setItem("adp_orders",JSON.stringify(orders))};
+function renderProducts(){let q=(document.getElementById("search").value||"").toLowerCase(),cat=document.getElementById("categoryFilter").value;let cats=[...new Set(products.map(p=>p.category))];let sel=document.getElementById("categoryFilter"),old=sel.value;sel.innerHTML='<option value="">Todas las categorías</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join("");sel.value=cats.includes(old)?old:"";cat=sel.value;let list=products.filter(p=>(p.name+" "+p.desc+" "+p.category).toLowerCase().includes(q)&&(!cat||p.category===cat));document.getElementById("productCount").textContent=products.length+" productos";document.getElementById("products").innerHTML=list.length?list.map(p=>`<article class="card"><div class="photo">${p.image&&p.image.startsWith("http")?`<img src="${esc(p.image)}" alt="${esc(p.name)}" onerror="this.style.display='none'">`:esc(p.image||"✿")}</div><div class="card-body"><div class="category">${esc(p.category)}</div><h3>${esc(p.name)}</h3><div class="desc">${esc(p.desc)}</div><div class="price">${money(p.price)}</div><div class="card-actions"><button class="pink" onclick="addToCart(${p.id})">Agregar</button><button class="secondary" onclick="buyNow(${p.id})">Comprar</button></div></div></article>`).join(""):'<div class="empty" style="grid-column:1/-1">No encontramos productos con esa búsqueda.</div>'}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function addToCart(id){let item=cart.find(x=>x.id===id);item?item.qty++:cart.push({id,qty:1});saveAll();updateCartCount();toast("Producto agregado al carrito")}
+function buyNow(id){addToCart(id);openCart()}
+function updateCartCount(){document.getElementById("cartCount").textContent=cart.reduce((a,b)=>a+b.qty,0)}
+function cartTotal(){return cart.reduce((s,i)=>s+(products.find(p=>p.id===i.id)?.price||0)*i.qty,0)}
+function openCart(){renderCart();document.getElementById("cartModal").classList.add("show")}
+function renderCart(){let el=document.getElementById("cartItems");el.innerHTML=cart.length?cart.map(i=>{let p=products.find(p=>p.id===i.id);if(!p)return"";return `<div class="row"><div><strong>${esc(p.name)}</strong><small>${money(p.price)} c/u</small></div><div class="qty"><button class="secondary" onclick="changeQty(${i.id},-1)">−</button>${i.qty}<button class="secondary" onclick="changeQty(${i.id},1)">+</button><button class="secondary" onclick="removeItem(${i.id})">×</button></div></div>`}).join(""):'<div class="empty">Todavía no agregaste productos.</div>';document.getElementById("cartTotal").textContent=money(cartTotal())}
+function changeQty(id,d){let i=cart.find(x=>x.id===id);if(i)i.qty+=d;cart=cart.filter(x=>x.qty>0);saveAll();updateCartCount();renderCart()}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);saveAll();updateCartCount();renderCart()}
+function openCheckout(){if(!cart.length){alert("Agregá al menos un producto al carrito.");return}closeModal("cartModal");document.getElementById("checkoutTotal").textContent=money(cartTotal());document.getElementById("checkoutModal").classList.add("show")}
+function placeOrder(){let name=document.getElementById("cName").value.trim(),phone=document.getElementById("cPhone").value.trim();if(!name||!phone){alert("Completá tu nombre y WhatsApp.");return}let order={number:"ADP-"+Date.now().toString().slice(-6),date:new Date().toLocaleString("es-AR"),name,phone,email:document.getElementById("cEmail").value,delivery:document.getElementById("cDelivery").value,notes:document.getElementById("cNotes").value,payment:document.getElementById("cPayment").value,items:cart.map(i=>({...i,name:products.find(p=>p.id===i.id)?.name||"Producto",price:products.find(p=>p.id===i.id)?.price||0})),total:cartTotal(),status:"Pendiente"};orders.unshift(order);saveAll();cart=[];saveAll();updateCartCount();closeModal("checkoutModal");alert("Pedido de demostración registrado: "+order.number+". Aún no se procesó ningún pago.");showOrderReceipt(order)}
+function showOrderReceipt(o){let text=`PEDIDO ${o.number}\nCliente: ${o.name}\nWhatsApp: ${o.phone}\nPago: ${o.payment}\nEntrega: ${o.delivery}\n\n${o.items.map(i=>`${i.qty} x ${i.name} - ${money(i.price*i.qty)}`).join("\n")}\n\nTOTAL: ${money(o.total)}\nNotas: ${o.notes||"-"}`;if(confirm("¿Querés copiar el resumen del pedido?")){navigator.clipboard?.writeText(text).then(()=>alert("Resumen copiado." )).catch(()=>prompt("Copiá el resumen:",text))}}
+function closeModal(id){document.getElementById(id).classList.remove("show")}
+function scrollToProducts(){document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"})}
+function toast(t){let e=document.createElement("div");e.textContent=t;e.style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#282522;color:white;padding:13px 18px;border-radius:99px;z-index:20";document.body.appendChild(e);setTimeout(()=>e.remove(),1800)}
+function adminLogin(){let pin=prompt("Panel de demostración. Ingresá la clave local (por defecto: alma2026):");if(pin==="alma2026"){document.getElementById("admin").classList.add("show");renderAdmin();document.getElementById("admin").scrollIntoView({behavior:"smooth"})}else if(pin!==null)alert("Clave incorrecta.")}
+function closeAdmin(){document.getElementById("admin").classList.remove("show")}
+function resetProductForm(){editingId=null;["pName","pCategory","pPrice","pImage","pDesc"].forEach(id=>document.getElementById(id).value="")}
+function saveProduct(){let name=document.getElementById("pName").value.trim(),category=document.getElementById("pCategory").value.trim(),price=Number(document.getElementById("pPrice").value),image=document.getElementById("pImage").value.trim()||"✿",desc=document.getElementById("pDesc").value.trim();if(!name||!category||!price){alert("Completá nombre, categoría y precio.");return}if(editingId){products=products.map(p=>p.id===editingId?{...p,name,category,price,image,desc}:p)}else products.unshift({id:Date.now(),name,category,price,image,desc});saveAll();resetProductForm();renderProducts();renderAdmin();alert("Producto guardado en este navegador.")}
+function renderAdmin(){document.getElementById("adminProducts").innerHTML="<h3>Productos cargados</h3>"+products.map(p=>`<div class="row"><div><strong>${esc(p.name)}</strong><small>${money(p.price)} · ${esc(p.category)}</small></div><div><button class="secondary" onclick="editProduct(${p.id})">Editar</button> <button class="secondary" onclick="deleteProduct(${p.id})">Eliminar</button></div></div>`).join("")+'<p><button class="secondary" onclick="showOrders()">Ver pedidos guardados</button> <button class="secondary" onclick="openCosts()">Costos y precios</button> <button class="secondary" onclick="exportData()">Exportar datos JSON</button></p>'}
+function editProduct(id){let p=products.find(p=>p.id===id);if(!p)return;editingId=id;document.getElementById("pName").value=p.name;document.getElementById("pCategory").value=p.category;document.getElementById("pPrice").value=p.price;document.getElementById("pImage").value=p.image;document.getElementById("pDesc").value=p.desc;document.getElementById("admin").scrollIntoView({behavior:"smooth"})}
+function deleteProduct(id){if(confirm("¿Eliminar este producto?")){products=products.filter(p=>p.id!==id);saveAll();renderProducts();renderAdmin()}}
+function showOrders(){document.getElementById("ordersArea").classList.add("show");document.getElementById("ordersList").innerHTML=orders.length?orders.map(o=>`<div class="row"><div><strong>${esc(o.number)} · ${esc(o.name)}</strong><small>${esc(o.date)} · ${esc(o.payment)} · ${o.items.length} línea(s)</small><small>Total: ${money(o.total)} · Estado: ${esc(o.status)}</small></div><button class="secondary" onclick="copyOrder('${o.number}')">Ver resumen</button></div>`).join(""):'<p>No hay pedidos guardados en este navegador.</p>';document.getElementById("ordersArea").scrollIntoView({behavior:"smooth"})}
+function copyOrder(num){let o=orders.find(x=>x.number===num);if(!o)return;alert(`${o.number}\n${o.name} · ${o.phone}\n${o.items.map(i=>`${i.qty} x ${i.name} — ${money(i.price*i.qty)}`).join("\n")}\nTotal: ${money(o.total)}\nPago: ${o.payment}\nNotas: ${o.notes||"-"}`)}
+function closeOrders(){document.getElementById("ordersArea").classList.remove("show")}
+function exportData(){let blob=new Blob([JSON.stringify({products,orders},null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="alma-de-papel-datos.json";a.click();URL.revokeObjectURL(a.href)}
+
+let costEstimates=JSON.parse(localStorage.getItem("adp_costs")||"[]");
+function openCosts(){const panel=document.getElementById("costsArea");panel.style.display="block";panel.classList.add("show");calculateCost();renderSavedCosts();panel.scrollIntoView({behavior:"smooth",block:"start"});}
+function closeCosts(){const panel=document.getElementById("costsArea");panel.style.display="none";panel.classList.remove("show");}
+function toggleCostType(){let is3d=document.getElementById("costType").value==="3d";["filamentField","rollField","hoursField","electricityField","machineField"].forEach(id=>document.getElementById(id).classList.toggle("hidden",!is3d))}
+function calcFilament(){let grams=Number(document.getElementById("costGrams").value)||0,roll=Number(document.getElementById("costRoll").value)||0;document.getElementById("costMaterial").value=Math.round(grams*roll/1000)}
+function readCost(){let type=document.getElementById("costType").value; if(type==="3d")calcFilament();let materials=Number(document.getElementById("costMaterial").value)||0,pack=Number(document.getElementById("costPackaging").value)||0,labor=Number(document.getElementById("costLabor").value)||0,other=Number(document.getElementById("costOther").value)||0,hours=type==="3d"?(Number(document.getElementById("costHours").value)||0):0,electric=type==="3d"?hours*(Number(document.getElementById("costElectricity").value)||0):0,machine=type==="3d"?hours*(Number(document.getElementById("costMachine").value)||0):0,total=materials+pack+labor+other+electric+machine,margin=Number(document.getElementById("costMargin").value)||0,price=Math.ceil(total*(1+margin/100)/100)*100;return {name:document.getElementById("costName").value.trim(),category:document.getElementById("costCategory").value.trim()||"Personalizados",type,materials,pack,labor,other,electric,machine,hours,total,margin,price,profit:price-total,image:document.getElementById("costImage").value.trim()||"✿",date:new Date().toLocaleDateString("es-AR")}}
+function calculateCost(){let c=readCost();document.getElementById("costTotal").textContent=money(c.total);document.getElementById("costSuggested").textContent=money(c.price);document.getElementById("costProfit").textContent=money(c.profit)}
+function publishCostProduct(){let c=readCost();if(!c.name){alert("Ingresá el nombre del producto.");return}if(c.total<=0){alert("Cargá al menos un costo mayor que cero.");return}products.unshift({id:Date.now(),name:c.name,category:c.category,price:c.price,image:c.image,desc:"Producto personalizado de Alma de Papel. Consultá opciones disponibles."});saveAll();renderProducts();renderAdmin();alert("Producto agregado al catálogo con el precio sugerido. Revisá la foto y la descripción antes de publicar la tienda real.");}
+function saveCostEstimate(){let c=readCost();if(!c.name){alert("Ingresá el nombre del producto para guardar el cálculo.");return}costEstimates.unshift(c);localStorage.setItem("adp_costs",JSON.stringify(costEstimates));renderSavedCosts();alert("Cálculo guardado en este navegador.")}
+function renderSavedCosts(){let el=document.getElementById("savedCosts");if(!el)return;el.innerHTML="<h3>Cálculos guardados</h3>"+(costEstimates.length?costEstimates.map((c,i)=>`<div class="row"><div><strong>${esc(c.name)}</strong><small>Costo: ${money(c.total)} · Precio sugerido: ${money(c.price)} · Ganancia: ${money(c.profit)}</small></div><button class="secondary" onclick="loadCost(${i})">Cargar</button></div>`).join(""):'<p class="desc">Todavía no guardaste cálculos.</p>')}
+function loadCost(i){let c=costEstimates[i];if(!c)return;document.getElementById("costName").value=c.name;document.getElementById("costCategory").value=c.category;document.getElementById("costType").value=c.type;document.getElementById("costMaterial").value=c.materials;document.getElementById("costPackaging").value=c.pack;document.getElementById("costLabor").value=c.labor;document.getElementById("costOther").value=c.other;document.getElementById("costMargin").value=c.margin;document.getElementById("costImage").value=c.image;toggleCostType();calculateCost()}
+
+
+
+
+
+(function initMaterialLibrary(){
+  const key="adp_material_library";
+  let materials=JSON.parse(localStorage.getItem(key)||"[]");
+  window.adpMaterialLines=[];
+  const $=id=>document.getElementById(id);
+  const money=n=>new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:2}).format(n||0);
+  function render(){
+    $("matLibraryList").innerHTML=materials.length?materials.map((m,i)=>`<div class="row"><div><strong>${m.name}</strong><small>${m.category} · ${money(m.price)} por ${m.amount} ${m.unit}</small></div><div><button class="secondary" type="button" data-del-mat="${i}">Eliminar</button></div></div>`).join(""):'<p class="desc">Todavía no guardaste materiales.</p>';
+    $("matSelect").innerHTML='<option value="">Seleccioná un material...</option>'+materials.map((m,i)=>`<option value="${i}">${m.name} — ${money(m.price/m.amount)} por ${m.unit}</option>`).join("");
+    $("matLibraryList").querySelectorAll("[data-del-mat]").forEach(b=>b.addEventListener("click",()=>{materials.splice(Number(b.dataset.delMat),1);save();render()}));
+  }
+  function save(){localStorage.setItem(key,JSON.stringify(materials))}
+  function renderLines(){
+    $("matProductLines").innerHTML=window.adpMaterialLines.length?'<h4>Materiales incluidos en este producto</h4>'+window.adpMaterialLines.map((x,i)=>`<div class="row"><div><strong>${x.name}</strong><small>${x.qty} ${x.unit} × ${money(x.unitCost)} = ${money(x.cost)}</small></div><button class="secondary" type="button" data-del-line="${i}">Quitar</button></div>`).join(""):'<p class="desc">Todavía no agregaste materiales guardados a este cálculo.</p>';
+    $("matProductLines").querySelectorAll("[data-del-line]").forEach(b=>b.addEventListener("click",()=>{window.adpMaterialLines.splice(Number(b.dataset.delLine),1);renderLines();window.dispatchEvent(new Event("adp-cost-change"))}));
+  }
+  function init(){
+    $("matSaveBtn").addEventListener("click",()=>{
+      const name=$("matName").value.trim(),price=Number($("matPrice").value),amount=Number($("matAmount").value),unit=$("matUnit").value,category=$("matCategory").value;
+      if(!name||price<=0||amount<=0){alert("Ingresá el nombre, el precio y el contenido comprado.");return}
+      materials.push({name,price,amount,unit,category});save();render();$("matName").value="";$("matPrice").value="";$("matAmount").value="1";
+    });
+    $("matClearBtn").addEventListener("click",()=>{$("matName").value="";$("matPrice").value="";$("matAmount").value="1"});
+    $("matAddBtn").addEventListener("click",()=>{
+      const i=$("matSelect").value;if(i===""){alert("Primero seleccioná un material guardado.");return}
+      const m=materials[Number(i)],qty=Number($("matUsedQty").value)||0,unit=$("matUsedUnit").value;
+      if(!m||qty<=0){alert("Indicá la cantidad utilizada.");return}
+      if(unit!==m.unit){alert("La unidad utilizada debe coincidir con la unidad del material guardado ("+m.unit+").");return}
+      const unitCost=m.price/m.amount;window.adpMaterialLines.push({name:m.name,qty,unit,unitCost,cost:unitCost*qty});renderLines();window.dispatchEvent(new Event("adp-cost-change"));
+    });
+    render();renderLines();
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+})();
+
+(function initStandaloneCostCalculator(){
+  function num(id){const el=document.getElementById(id);return Math.max(0,Number(el&&el.value)||0)}
+  function moneyFmt(n){return new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(Math.round(n||0))}
+  let savedCalculations=JSON.parse(localStorage.getItem("adp_standalone_calculations")||"[]");
+  function calc(){
+    const is3d=document.getElementById("calcType").value==="3d";
+    const filament=is3d?num("calcGrams")*num("calcRoll")/1000:0;
+    const hours=num("calcHours");
+    const electricity=hours*num(is3d?"calcElectricity":"calcPaperElectricity");
+    const machine=hours*num(is3d?"calcMachine":"calcPaperMachine");
+    const materialLines=window.adpMaterialLines||[];const materialTotal=materialLines.reduce((s,x)=>s+x.cost,0);const total=filament+materialTotal+num("calcMaterials")+num("calcPack")+num("calcLabor")+num("calcOther")+electricity+machine;
+    const price=Math.ceil((total*(1+num("calcMargin")/100))/100)*100;
+    document.getElementById("calcFilamentResult").textContent=moneyFmt(filament);
+    document.getElementById("calcSavedMaterialsResult").textContent=moneyFmt(materialTotal);
+    document.getElementById("calcElectricResult").textContent=moneyFmt(electricity);
+    document.getElementById("calcMachineResult").textContent=moneyFmt(machine);
+    document.getElementById("calcTotalResult").textContent=moneyFmt(total);
+    document.getElementById("calcPriceResult").textContent=moneyFmt(price);
+    document.getElementById("calcProfitResult").textContent=moneyFmt(price-total);
+    document.getElementById("calcMessage").textContent=total>0?(is3d?"Cálculo actualizado con las tarifas de impresión 3D.":"Cálculo actualizado con las tarifas específicas de papelería. Si electricidad o mantenimiento dan $0, configurá sus valores por hora."):"Ingresá tus costos para calcular el precio sugerido.";
+  }
+  function currentCalculation(){
+    const is3d=document.getElementById("calcType").value==="3d";
+    const grams=num("calcGrams"),roll=num("calcRoll"),hours=num("calcHours");
+    const filament=is3d?grams*roll/1000:0, electricity=hours*num(is3d?"calcElectricity":"calcPaperElectricity"), machine=hours*num(is3d?"calcMachine":"calcPaperMachine");
+    const lines=(window.adpMaterialLines||[]).map(x=>({...x}));
+    const materials=lines.reduce((sum,x)=>sum+x.cost,0)+num("calcMaterials");
+    const packaging=num("calcPack"),labor=num("calcLabor"),other=num("calcOther"),total=filament+materials+packaging+labor+other+electricity+machine;
+    const markup=num("calcMargin"),price=Math.ceil((total*(1+markup/100))/100)*100;
+    return {name:document.getElementById("calcName").value.trim()||"Producto sin nombre",type:document.getElementById("calcType").value,grams,roll,hours,electricityRate:num("calcElectricity"),machineRate:num("calcMachine"),paperElectricityRate:num("calcPaperElectricity"),paperMachineRate:num("calcPaperMachine"),materialsExtra:num("calcMaterials"),packaging,labor,other,markup,lines,total,price,profit:price-total,date:new Date().toLocaleString("es-AR")};
+  }
+  function renderSaved(){
+    const el=document.getElementById("calcSavedList");if(!el)return;
+    el.innerHTML='<h3 style="font-family:Georgia,serif;font-weight:normal">Cálculos guardados</h3>'+(savedCalculations.length?savedCalculations.map((c,i)=>`<div class="row"><div><strong>${esc(c.name)}</strong><small>${esc(c.date)} · Costo ${moneyFmt(c.total)} · Precio sugerido ${moneyFmt(c.price)} · Ganancia ${moneyFmt(c.profit)}</small></div><div style="display:flex;gap:6px"><button class="secondary" type="button" data-load-calc="${i}">Cargar</button><button class="secondary" type="button" data-delete-calc="${i}">Eliminar</button></div></div>`).join(""):'<p class="desc">Todavía no guardaste cálculos.</p>');
+    el.querySelectorAll('[data-load-calc]').forEach(b=>b.addEventListener('click',()=>{const c=savedCalculations[Number(b.dataset.loadCalc)];if(!c)return;document.getElementById("calcName").value=c.name;document.getElementById("calcType").value=c.type;document.getElementById("calcGrams").value=c.grams;document.getElementById("calcRoll").value=c.roll;document.getElementById("calcHours").value=c.hours;document.getElementById("calcElectricity").value=c.electricityRate;document.getElementById("calcMachine").value=c.machineRate;document.getElementById("calcPaperElectricity").value=c.paperElectricityRate||0;document.getElementById("calcPaperMachine").value=c.paperMachineRate||0;document.getElementById("calcMaterials").value=c.materialsExtra;document.getElementById("calcPack").value=c.packaging;document.getElementById("calcLabor").value=c.labor;document.getElementById("calcOther").value=c.other;document.getElementById("calcMargin").value=c.markup;window.adpMaterialLines=(c.lines||[]).map(x=>({...x}));window.dispatchEvent(new Event("adp-cost-change"));calc();document.getElementById("calcMessage").textContent="Cálculo guardado cargado para revisar o modificar.";}));
+    el.querySelectorAll('[data-delete-calc]').forEach(b=>b.addEventListener('click',()=>{savedCalculations.splice(Number(b.dataset.deleteCalc),1);localStorage.setItem("adp_standalone_calculations",JSON.stringify(savedCalculations));renderSaved()}));
+  }
+  function saveCalculation(){const c=currentCalculation();if(c.total<=0){alert("Ingresá al menos un costo antes de guardar.");return}savedCalculations.unshift(c);localStorage.setItem("adp_standalone_calculations",JSON.stringify(savedCalculations));renderSaved();document.getElementById("calcMessage").textContent="Cálculo guardado en este navegador. No se publicó ningún producto.";}
+  function reset(){
+    document.getElementById("calcName").value="";
+    document.getElementById("calcType").value="3d";
+    const defaults={calcGrams:0,calcRoll:26000,calcHours:0,calcElectricity:39.84,calcMachine:150,calcPaperElectricity:4.65,calcPaperMachine:20,calcMaterials:0,calcPack:0,calcLabor:0,calcOther:0,calcMargin:60};
+    Object.entries(defaults).forEach(([id,v])=>document.getElementById(id).value=v);calc();
+  }
+  function init(){
+    window.addEventListener("adp-cost-change",calc);
+    const panel=document.getElementById("costsArea");if(panel)panel.style.display="block";
+    document.getElementById("calcRunBtn").addEventListener("click",calc);
+    document.getElementById("calcResetBtn").addEventListener("click",reset);
+    document.getElementById("calcSaveBtn").addEventListener("click",saveCalculation);
+    ["calcType","calcGrams","calcRoll","calcHours","calcElectricity","calcMachine","calcPaperElectricity","calcPaperMachine","calcMaterials","calcPack","calcLabor","calcOther","calcMargin"].forEach(id=>{
+      const el=document.getElementById(id);el.addEventListener("input",calc);el.addEventListener("change",calc);
+    });renderSaved();calc();
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+})();
+
+renderProducts();updateCartCount();
+</script><script>
+(function(){
+ const KEY='adp_real_sales_v1';
+ let sales=[];
+ try{sales=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(sales))sales=[];}catch(e){sales=[];}
+ const byId=id=>document.getElementById(id);
+ const cash=n=>new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:2}).format(Number(n)||0);
+ const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+ const thisMonth=()=>today().slice(0,7);
+ function persist(){localStorage.setItem(KEY,JSON.stringify(sales));}
+ function fillProducts(){const sel=byId('saleProduct');if(!sel)return;const old=sel.value;let list=typeof products!=='undefined'&&Array.isArray(products)?products:[];sel.innerHTML='<option value="">Elegí un producto</option>'+list.map(p=>`<option value="${Number(p.id)}">${safe(p.name)} — ${cash(p.price)}</option>`).join('');if([...sel.options].some(o=>o.value===old))sel.value=old;syncPrice();}
+ function safe(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ function syncPrice(){const p=(typeof products!=='undefined'&&Array.isArray(products)?products:[]).find(x=>String(x.id)===byId('saleProduct').value);if(p)byId('salePrice').value=Number(p.price)||0;}
+ function addSale(){const id=byId('saleProduct').value;const p=(typeof products!=='undefined'&&Array.isArray(products)?products:[]).find(x=>String(x.id)===id);const date=byId('saleDate').value;const qty=Math.floor(Number(byId('saleQty').value)||0),price=Number(byId('salePrice').value)||0,cost=Number(byId('saleCost').value)||0;if(!p){alert('Elegí un producto.');return}if(!date){alert('Ingresá la fecha de venta.');return}if(qty<1||price<0||cost<0){alert('Revisá cantidad, precio y costo.');return}sales.unshift({id:Date.now(),date,productId:p.id,product:p.name,qty,price,cost,payment:byId('salePayment').value,status:byId('saleStatus').value,note:byId('saleNote').value.trim(),createdAt:new Date().toISOString()});persist();byId('saleQty').value=1;byId('saleCost').value=0;byId('saleNote').value='';render();alert('Venta guardada.');}
+ function removeSale(id){if(!confirm('¿Eliminar esta venta del registro?'))return;sales=sales.filter(s=>s.id!==id);persist();render();}
+ function render(){const month=byId('saleMonth').value||thisMonth();const rows=sales.filter(s=>String(s.date||'').slice(0,7)===month);const gross=rows.reduce((a,s)=>a+s.qty*s.price,0),collected=rows.filter(s=>s.status==='Cobrado').reduce((a,s)=>a+s.qty*s.price,0),pending=rows.filter(s=>s.status!=='Cobrado').reduce((a,s)=>a+s.qty*s.price,0),costs=rows.reduce((a,s)=>a+s.qty*s.cost,0);byId('salesGross').textContent=cash(gross);byId('salesCollected').textContent=cash(collected);byId('salesPending').textContent=cash(pending);byId('salesCosts').textContent=cash(costs);byId('salesProfit').textContent=cash(gross-costs);byId('salesCount').textContent=String(rows.length);
+ const list=byId('salesList');list.innerHTML=rows.length?'<h3>Ventas del mes</h3>'+rows.map(s=>`<div class="row"><div><strong>${safe(s.product)} × ${s.qty}</strong><small>${safe(s.date)} · ${safe(s.payment)} · ${safe(s.status)}${s.note?' · '+safe(s.note):''}</small><small>Venta: ${cash(s.qty*s.price)} · Costo: ${cash(s.qty*s.cost)} · Ganancia estimada: ${cash(s.qty*(s.price-s.cost))}</small></div><button class="secondary" type="button" data-remove-sale="${s.id}">Eliminar</button></div>`).join(''):'<p class="desc">No hay ventas registradas para este mes.</p>';
+ list.querySelectorAll('[data-remove-sale]').forEach(b=>b.addEventListener('click',()=>removeSale(Number(b.dataset.removeSale))));}
+ function download(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+ function csv(){const month=byId('saleMonth').value||thisMonth();const rows=sales.filter(s=>String(s.date||'').slice(0,7)===month);const fields=['date','product','qty','price','cost','payment','status','note'];const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';download(`alma-de-papel-ventas-${month}.csv`,[fields.join(';'),...rows.map(s=>fields.map(f=>quote(s[f])).join(';'))].join('\r\n'),'text/csv;charset=utf-8;');}
+ function json(){download('alma-de-papel-respaldo-ventas.json',JSON.stringify(sales,null,2),'application/json');}
+ function init(){byId('saleDate').value=today();byId('saleMonth').value=thisMonth();fillProducts();byId('saleProduct').addEventListener('change',syncPrice);byId('saleAddBtn').addEventListener('click',addSale);byId('saleMonth').addEventListener('change',render);byId('salesExportBtn').addEventListener('click',csv);byId('salesExportJsonBtn').addEventListener('click',json);render();const adminBtn=document.querySelector('.nav button:last-child');if(adminBtn)adminBtn.addEventListener('click',()=>setTimeout(fillProducts,100));const observer=new MutationObserver(()=>{if(byId('admin')?.classList.contains('show'))fillProducts()});const admin=byId('admin');if(admin)observer.observe(admin,{attributes:true,attributeFilter:['class']});}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body></html>
